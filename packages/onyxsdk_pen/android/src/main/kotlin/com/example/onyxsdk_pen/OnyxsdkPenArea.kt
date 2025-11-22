@@ -38,7 +38,7 @@ internal class OnyxsdkPenArea(context: Context, messenger: BinaryMessenger, id: 
     private val channel: MethodChannel = MethodChannel(messenger, "onyxsdk_pen_area")
 
     companion object {
-        private val pointsToRedraw = 20
+        private val pointsToRedraw = 2
     }
 
     private var strokeWidth = 0.0f
