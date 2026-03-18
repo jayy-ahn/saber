@@ -746,17 +746,42 @@ class EditorState extends State<Editor> {
     // whether the stylus button is or was pressed
     stylusButtonPressed = stylusButtonPressed || buttonPressed;
 
-    if (isHovering) {
-      if (buttonPressed) {
-        if (currentTool is Eraser) return;
-        tmpTool = currentTool;
-        currentTool = Eraser();
-        setState(() {});
-      } else {
-        if (tmpTool != null && currentTool is Eraser) {
-          currentTool = tmpTool!;
-          tmpTool = null;
+    if (!stows.eraserOnStylusButtonPressAndRelease.value) {
+      // standard behavior of stylus button, while holding is erasing
+      if (isHovering) {
+        if (buttonPressed) {
+          if (currentTool is Eraser) return;
+          tmpTool = currentTool;
+          currentTool = Eraser();
           setState(() {});
+        } else {
+          if (tmpTool != null) {
+            currentTool = tmpTool!;
+            tmpTool = null;
+            setState(() {});
+          }
+        }
+      }
+    } else {
+      // some pens do not send moving events when stylus button is pressed
+      // so switch to eraser when button is pressed and back on next press
+      if (isHovering) {
+        if (buttonPressed) {
+          // switch to Eraser
+          if (currentTool is Eraser) {
+            if (tmpTool != null) {
+              // change back original tool
+              currentTool = tmpTool!;
+              tmpTool = null;
+              setState(() {});
+            } else {
+              return; // when I am on eraser and previous tool is not set, it means that Eraser is main tool
+            }
+          } else {
+            tmpTool = currentTool;
+            currentTool = Eraser();
+            setState(() {});
+          }
         }
       }
     }

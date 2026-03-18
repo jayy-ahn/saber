@@ -199,6 +199,11 @@ class Stows {
     false,
     volatile: !_isOnMainIsolate,
   );
+  final eraserOnStylusButtonPressAndRelease = PlainStow(
+    'eraserOnStylusButtonPressAndRelease',
+    false,
+    volatile: !_isOnMainIsolate,
+  );
   final hideFingerDrawingToggle = PlainStow(
     'hideFingerDrawingToggle',
     false,

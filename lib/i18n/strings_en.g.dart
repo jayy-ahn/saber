@@ -624,6 +624,9 @@ class TranslationsSettingsPrefLabelsEn {
 	/// en: 'Auto-disable the eraser'
 	String get disableEraserAfterUse => 'Auto-disable the eraser';
 
+	/// en: 'Eraser on stylus button press and release'
+	String get eraserOnStylusButtonPressAndRelease => 'Eraser on stylus button press and release';
+
 	/// en: 'Hide the finger drawing toggle'
 	String get hideFingerDrawingToggle => 'Hide the finger drawing toggle';
 
@@ -683,6 +686,9 @@ class TranslationsSettingsPrefDescriptionsEn {
 
 	/// en: 'Automatically switches back to the pen after using the eraser'
 	String get disableEraserAfterUse => 'Automatically switches back to the pen after using the eraser';
+
+	/// en: 'Switch to eraser pressing stylus button and releasing it'
+	String get eraserOnStylusButtonPressAndRelease => 'Switch to eraser pressing stylus button and releasing it';
 
 	/// en: 'Larger images will be compressed'
 	String get maxImageSize => 'Larger images will be compressed';
