@@ -24,7 +24,7 @@ jobs:
       APP_STORE_CONNECT_PRIVATE_KEY: ${{secrets.APP_STORE_CONNECT_PRIVATE_KEY}}
       APP_STORE_CERTIFICATE_KEY: ${{secrets.APP_STORE_CERTIFICATE_KEY}}
     timeout-minutes: 60
-    if: ${{ github.repository == 'jayy-ahn/saber' || secrets.APP_STORE_CONNECT_ISSUER_ID != '' }}
+    if: ${{ github.event_name == 'push' && github.repository == 'saber-notes/saber' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v6

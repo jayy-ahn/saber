@@ -21,7 +21,7 @@ jobs:
     permissions:
       contents: write
     timeout-minutes: 60
-    if: ${{ github.repository == 'jayy-ahn/saber' || secrets.APP_STORE_CONNECT_ISSUER_ID != '' }}
+    if: ${{ github.event_name == 'push' && github.repository == 'saber-notes/saber' }}
     env:
       APP_STORE_CONNECT_ISSUER_ID: ${{secrets.APP_STORE_CONNECT_ISSUER_ID}}
       APP_STORE_CONNECT_KEY_IDENTIFIER: ${{secrets.APP_STORE_CONNECT_KEY_IDENTIFIER}}
