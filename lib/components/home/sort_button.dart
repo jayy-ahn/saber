@@ -7,6 +7,8 @@ import 'package:saber/i18n/strings.g.dart';
 import 'package:saber/pages/editor/editor.dart';
 import 'package:stow_plain/stow_plain.dart';
 
+// ignore_for_file: deprecated_member_use
+
 class SortNotes {
   SortNotes._();
 
@@ -139,7 +141,7 @@ class SortButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.sort),
+      icon: const Icon(Icons.sort),
       onPressed: () async {
         showDialog(
           context: context,
