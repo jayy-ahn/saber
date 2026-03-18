@@ -31,6 +31,17 @@
 [中文 (繁體, 台灣)](https://github.com/saber-notes/saber/blob/main/README-zh-TW.md) |
 [العربية](https://github.com/saber-notes/saber/blob/main/README-ar.md) 
 
+## This Fork
+
+This fork implements the following pull requests from the main Saber repository:
+
+- **PR #1428**: Add `eraserOnStylusButtonPressAndRelease` preference - allows toggling eraser on stylus button press instead of holding
+- **PR #1408**: Sort notes and folders - adds sorting by name, last modified, and size on disk
+
+These changes were implemented using [opencode](https://opencode.ai), an AI-powered development assistant.
+
+---
+
 Saber is the notes app built for handwriting.
 
 It's designed to be as simple and intuitive as possible, while still delivering unique features that you'll actually use. Additionally, Saber is available across all your devices, large and small, and syncs between them seamlessly.
