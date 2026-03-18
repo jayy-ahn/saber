@@ -104,6 +104,7 @@ class TranslationsHomeEn {
 
 	late final TranslationsHomeRenameFolderEn renameFolder = TranslationsHomeRenameFolderEn.internal(_root);
 	late final TranslationsHomeDeleteFolderEn deleteFolder = TranslationsHomeDeleteFolderEn.internal(_root);
+	late final TranslationsHomeSortNamesEn sortNames = TranslationsHomeSortNamesEn.internal(_root);
 }
 
 // Path: sentry
@@ -128,6 +129,7 @@ class TranslationsSettingsEn {
 	late final TranslationsSettingsPrefDescriptionsEn prefDescriptions = TranslationsSettingsPrefDescriptionsEn.internal(_root);
 	late final TranslationsSettingsThemeModesEn themeModes = TranslationsSettingsThemeModesEn.internal(_root);
 	late final TranslationsSettingsLayoutSizesEn layoutSizes = TranslationsSettingsLayoutSizesEn.internal(_root);
+	late final TranslationsSettingsSortOrdersEn sortOrders = TranslationsSettingsSortOrdersEn.internal(_root);
 	late final TranslationsSettingsAccentColorPickerEn accentColorPicker = TranslationsSettingsAccentColorPickerEn.internal(_root);
 
 	/// en: 'Auto'
@@ -529,6 +531,27 @@ class TranslationsHomeDeleteFolderEn {
 	String get alsoDeleteContents => 'Also delete all notes inside this folder';
 }
 
+// Path: home.sortNames
+class TranslationsHomeSortNamesEn {
+	TranslationsHomeSortNamesEn.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Alphabetical'
+	String get alphabetical => 'Alphabetical';
+
+	/// en: 'Last modified'
+	String get lastModified => 'Last modified';
+
+	/// en: 'Size on disk'
+	String get sizeOnDisk => 'Size on disk';
+
+	/// en: 'Increasing'
+	String get increasing => 'Increasing';
+}
+
 // Path: sentry.consent
 class TranslationsSentryConsentEn {
 	TranslationsSentryConsentEn.internal(this._root);
@@ -645,6 +668,12 @@ class TranslationsSettingsPrefLabelsEn {
 	/// en: 'Print page indicators'
 	String get printPageIndicators => 'Print page indicators';
 
+	/// en: 'Sort function'
+	String get sortFunction => 'Sort function';
+
+	/// en: 'Sort order'
+	String get sortOrder => 'Sort order';
+
 	/// en: 'Auto-save'
 	String get autosave => 'Auto-save';
 
@@ -704,6 +733,10 @@ class TranslationsSettingsPrefDescriptionsEn {
 	/// en: 'Show page indicators in exports'
 	String get printPageIndicators => 'Show page indicators in exports';
 
+	late final TranslationsSettingsPrefDescriptionsSortFunctionEn sortFunction = TranslationsSettingsPrefDescriptionsSortFunctionEn.internal(_root);
+
+	late final TranslationsSettingsPrefDescriptionsSortOrderEn sortOrder = TranslationsSettingsPrefDescriptionsSortOrderEn.internal(_root);
+
 	/// en: 'Auto-save after a short delay, or never'
 	String get autosave => 'Auto-save after a short delay, or never';
 
@@ -756,6 +789,27 @@ class TranslationsSettingsLayoutSizesEn {
 
 	/// en: 'Tablet'
 	String get tablet => 'Tablet';
+}
+
+// Path: settings.sortOrders
+class TranslationsSettingsSortOrdersEn {
+	TranslationsSettingsSortOrdersEn.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Increasing'
+	String get increasing => 'Increasing';
+
+	/// en: 'Decreasing'
+	String get decreasing => 'Decreasing';
+
+	/// en: 'Ascending'
+	String get ascending => 'Ascending';
+
+	/// en: 'Descending'
+	String get descending => 'Descending';
 }
 
 // Path: settings.accentColorPicker
@@ -1369,6 +1423,39 @@ class TranslationsSentryConsentAnswersEn {
 
 	/// en: 'Ask me later'
 	String get later => 'Ask me later';
+}
+
+// Path: settings.prefDescriptions.sortFunction
+class TranslationsSettingsPrefDescriptionsSortFunctionEn {
+	TranslationsSettingsPrefDescriptionsSortFunctionEn.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Alphabetical'
+	String get alphabetical => 'Alphabetical';
+
+	/// en: 'Last modified'
+	String get lastModified => 'Last modified';
+
+	/// en: 'Size on disk'
+	String get sizeOnDisk => 'Size on disk';
+}
+
+// Path: settings.prefDescriptions.sortOrder
+class TranslationsSettingsPrefDescriptionsSortOrderEn {
+	TranslationsSettingsPrefDescriptionsSortOrderEn.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Ascending'
+	String get ascending => 'Ascending';
+
+	/// en: 'Descending'
+	String get descending => 'Descending';
 }
 
 // Path: settings.prefDescriptions.hideFingerDrawing

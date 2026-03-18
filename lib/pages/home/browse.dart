@@ -13,6 +13,7 @@ import 'package:saber/components/home/no_files.dart';
 import 'package:saber/components/home/path_components.dart';
 import 'package:saber/components/home/rename_note_button.dart';
 import 'package:saber/components/home/syncing_button.dart';
+import 'package:saber/components/home/sort_button.dart';
 import 'package:saber/components/theming/saber_theme.dart';
 import 'package:saber/data/file_manager/file_manager.dart';
 import 'package:saber/data/routes.dart';
@@ -140,7 +141,10 @@ class _BrowsePageState extends State<BrowsePage> {
                   bottom: 8, // less than other pages for path components
                 ),
               ),
-              actions: const [SyncingButton()],
+              actions: [
+                const SyncingButton(),
+                SortButton(callback: () => setState(() {})),
+              ],
             ),
             SliverToBoxAdapter(
               child: PathComponents(

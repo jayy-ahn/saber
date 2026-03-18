@@ -19,6 +19,7 @@ import 'package:saber/components/settings/settings_sentry.dart';
 import 'package:saber/components/settings/settings_subtitle.dart';
 import 'package:saber/components/settings/settings_switch.dart';
 import 'package:saber/components/settings/update_manager.dart';
+import 'package:saber/components/home/sort_button.dart';
 import 'package:saber/components/theming/adaptive_alert_dialog.dart';
 import 'package:saber/components/theming/adaptive_toggle_buttons.dart';
 import 'package:saber/components/theming/saber_theme.dart';
@@ -505,6 +506,50 @@ class _SettingsPageState extends State<SettingsPage> {
                   subtitle: t.settings.prefDescriptions.printPageIndicators,
                   icon: Icons.numbers,
                   pref: stows.printPageIndicators,
+                ),
+                ValueListenableBuilder(
+                  valueListenable: stows.sortFunctionIdx,
+                  builder: (context, _, _) {
+                    return SettingsSelection(
+                      title: t.settings.prefLabels.sortFunction,
+                      subtitle: SortNotes.getSortFunctionName(
+                        stows.sortFunctionIdx.value,
+                      ),
+                      icon: Icons.sort,
+                      pref: TransformedStow(
+                        stows.sortFunctionIdx,
+                        (int value) => value.toDouble(),
+                        (double value) => value.toInt(),
+                      ),
+                      options: [
+                        for (int i = 0; i < SortNotes.sortFunctions.length; i++)
+                          ToggleButtonsOption(
+                            i.toDouble(),
+                            Text(SortNotes.getSortFunctionName(i)),
+                          ),
+                      ],
+                      afterChange: (value) {
+                        stows.sortFunctionIdx.value = value.toInt();
+                        setState(() {});
+                      },
+                    );
+                  },
+                ),
+                ValueListenableBuilder(
+                  valueListenable: stows.isSortIncreasing,
+                  builder: (context, _, _) {
+                    return SettingsSwitch(
+                      title: t.settings.prefLabels.sortOrder,
+                  subtitle: stows.isSortIncreasing.value
+                      ? t.settings.sortOrders.ascending
+                      : t.settings.sortOrders.descending,
+                      icon: Icons.arrow_upward,
+                      pref: stows.isSortIncreasing,
+                      afterChange: (value) {
+                        setState(() {});
+                      },
+                    );
+                  },
                 ),
                 SettingsSubtitle(
                   subtitle: t.settings.prefCategories.performance,
