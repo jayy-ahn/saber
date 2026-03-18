@@ -21,6 +21,7 @@ jobs:
     permissions:
       contents: write
     timeout-minutes: 60
+    if: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID != '' }}
     env:
       APP_STORE_CONNECT_ISSUER_ID: ${{secrets.APP_STORE_CONNECT_ISSUER_ID}}
       APP_STORE_CONNECT_KEY_IDENTIFIER: ${{secrets.APP_STORE_CONNECT_KEY_IDENTIFIER}}
