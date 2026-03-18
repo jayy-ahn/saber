@@ -19,8 +19,22 @@ jobs:
           git remote add upstream https://github.com/saber-notes/saber.git || true
           git fetch upstream
 
-      - name: Merge upstream changes
+      - name: Merge upstream
+        id: merge
         run: |
-          git checkout main
-          git merge upstream/main --no-edit || true
-          git push origin main
+          git merge upstream/main --no-edit
+          echo "merge_success=true" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: Push changes
+        if: steps.merge.outcome == 'success'
+        run: git push origin main
+
+      - name: Create PR
+        if: steps.merge.outcome != 'success'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore: sync with upstream"
+          branch: upstream-sync
+          title: "chore: sync with upstream"
+          body: "Automatic sync from saber-notes/saber"
