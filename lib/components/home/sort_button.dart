@@ -18,7 +18,7 @@ class SortNotes {
   static final PlainStow<int> _sortFunctionIdx = stows.sortFunctionIdx;
   static final PlainStow<bool> _isIncreasingOrder = stows.isSortIncreasing;
 
-  static bool _isNeeded = true;
+  static var _isNeeded = true;
   static bool get isNeeded => _isNeeded;
 
   static int get sortFunctionIdx => _sortFunctionIdx.value;
@@ -73,7 +73,7 @@ class SortNotes {
   static DateTime _getDirLastModified(Directory dir) {
     assert(dir.existsSync());
     DateTime out = dir.statSync().modified;
-    for (FileSystemEntity entity
+    for (final FileSystemEntity entity
         in dir.listSync(recursive: true, followLinks: false)) {
       if (entity is File && entity.absolute.path.endsWith(Editor.extension)) {
         final DateTime curFileModified = entity.lastModifiedSync();
@@ -102,7 +102,7 @@ class SortNotes {
   static int _getDirSize(Directory dir) {
     assert(dir.existsSync());
     int out = 0;
-    for (FileSystemEntity entity
+    for (final FileSystemEntity entity
         in dir.listSync(recursive: true, followLinks: false)) {
       if (entity is File && entity.absolute.path.endsWith(Editor.extension)) {
         final int curFileSize = entity.lengthSync();
@@ -178,26 +178,29 @@ class _SortButtonDialogState extends State<_SortButtonDialog> {
             mainAxisSize: MainAxisSize.min,
             children: [
               for (int idx = 0; idx < sortNames.length; idx++)
-                RadioListTile<int>(
+                ListTile(
                   title: Text(sortNames[idx]),
-                  onChanged: (int? newValue) => {
-                    SortNotes.sortFunctionIdx = newValue!,
-                    setState(() {}),
-                    // Navigator.pop(context),
-                  },
-                  groupValue: SortNotes.sortFunctionIdx,
-                  value: idx,
+                  leading: Radio<int>(
+                    value: idx,
+                    groupValue: SortNotes.sortFunctionIdx,
+                    onChanged: (int? newValue) {
+                      SortNotes.sortFunctionIdx = newValue!;
+                      setState(() {});
+                    },
+                  ),
                 ),
-              CheckboxListTile(
-                  controlAffinity: ListTileControlAffinity.leading,
-                  title: Text(stows.isSortIncreasing.value
-                      ? t.settings.sortOrders.ascending
-                      : t.settings.sortOrders.descending),
+              ListTile(
+                title: Text(stows.isSortIncreasing.value
+                    ? t.settings.sortOrders.ascending
+                    : t.settings.sortOrders.descending),
+                leading: Checkbox(
                   value: SortNotes.isIncreasingOrder,
-                  onChanged: (bool? v) => {
-                        SortNotes.isIncreasingOrder = v!,
-                        setState(() {}),
-                      }),
+                  onChanged: (bool? v) {
+                    SortNotes.isIncreasingOrder = v!;
+                    setState(() {});
+                  },
+                ),
+              ),
             ],
           ),
         ),
