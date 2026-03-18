@@ -40,6 +40,10 @@ This fork implements the following pull requests from the main Saber repository:
 
 These changes were implemented using [opencode](https://opencode.ai), an AI-powered development assistant.
 
+### Release
+
+**[Download v1.31.1](https://github.com/jayy-ahn/saber/releases/tag/v1.31.1)** (APK, 127MB)
+
 ---
 
 Saber is the notes app built for handwriting.
