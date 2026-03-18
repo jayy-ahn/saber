@@ -75,8 +75,10 @@ class SortNotes {
   static DateTime _getDirLastModified(Directory dir) {
     assert(dir.existsSync());
     DateTime out = dir.statSync().modified;
-    for (final FileSystemEntity entity
-        in dir.listSync(recursive: true, followLinks: false)) {
+    for (final FileSystemEntity entity in dir.listSync(
+      recursive: true,
+      followLinks: false,
+    )) {
       if (entity is File && entity.absolute.path.endsWith(Editor.extension)) {
         final DateTime curFileModified = entity.lastModifiedSync();
         if (curFileModified.isAfter(out)) out = curFileModified;
@@ -86,7 +88,9 @@ class SortNotes {
   }
 
   static void _sortNotesLastModified(
-      List<String> filePaths, bool isIncreasing) {
+    List<String> filePaths,
+    bool isIncreasing,
+  ) {
     filePaths.sort((a, b) {
       final Directory firstDir = Directory(FileManager.documentsDirectory + a);
       final Directory secondDir = Directory(FileManager.documentsDirectory + b);
@@ -104,8 +108,10 @@ class SortNotes {
   static int _getDirSize(Directory dir) {
     assert(dir.existsSync());
     int out = 0;
-    for (final FileSystemEntity entity
-        in dir.listSync(recursive: true, followLinks: false)) {
+    for (final FileSystemEntity entity in dir.listSync(
+      recursive: true,
+      followLinks: false,
+    )) {
       if (entity is File && entity.absolute.path.endsWith(Editor.extension)) {
         final int curFileSize = entity.lengthSync();
         out += curFileSize;
@@ -131,10 +137,7 @@ class SortNotes {
 }
 
 class SortButton extends StatelessWidget {
-  const SortButton({
-    super.key,
-    required this.callback,
-  });
+  const SortButton({super.key, required this.callback});
 
   final void Function() callback;
 
@@ -192,9 +195,11 @@ class _SortButtonDialogState extends State<_SortButtonDialog> {
                   ),
                 ),
               ListTile(
-                title: Text(stows.isSortIncreasing.value
-                    ? t.settings.sortOrders.ascending
-                    : t.settings.sortOrders.descending),
+                title: Text(
+                  stows.isSortIncreasing.value
+                      ? t.settings.sortOrders.ascending
+                      : t.settings.sortOrders.descending,
+                ),
                 leading: Checkbox(
                   value: SortNotes.isIncreasingOrder,
                   onChanged: (bool? v) {

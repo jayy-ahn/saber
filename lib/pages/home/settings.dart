@@ -370,8 +370,12 @@ class _SettingsPageState extends State<SettingsPage> {
                   pref: stows.disableEraserAfterUse,
                 ),
                 SettingsSwitch(
-                  title: t.settings.prefLabels.eraserOnStylusButtonPressAndRelease,
-                  subtitle: t.settings.prefDescriptions.eraserOnStylusButtonPressAndRelease,
+                  title:
+                      t.settings.prefLabels.eraserOnStylusButtonPressAndRelease,
+                  subtitle: t
+                      .settings
+                      .prefDescriptions
+                      .eraserOnStylusButtonPressAndRelease,
                   icon: FontAwesomeIcons.eraser,
                   pref: stows.eraserOnStylusButtonPressAndRelease,
                 ),
@@ -540,9 +544,9 @@ class _SettingsPageState extends State<SettingsPage> {
                   builder: (context, _, _) {
                     return SettingsSwitch(
                       title: t.settings.prefLabels.sortOrder,
-                  subtitle: stows.isSortIncreasing.value
-                      ? t.settings.sortOrders.ascending
-                      : t.settings.sortOrders.descending,
+                      subtitle: stows.isSortIncreasing.value
+                          ? t.settings.sortOrders.ascending
+                          : t.settings.sortOrders.descending,
                       icon: Icons.arrow_upward,
                       pref: stows.isSortIncreasing,
                       afterChange: (value) {
