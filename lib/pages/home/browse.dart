@@ -178,10 +178,14 @@ class _BrowsePageState extends State<BrowsePage> {
                 await FileManager.deleteDirectory(folderPath);
                 findChildrenOfPath();
               },
-              folders: [
-                for (final directoryPath in children?.directories ?? const [])
-                  directoryPath,
-              ],
+              folders: () {
+                final unsortedFolders = [
+                  for (final directoryPath in children?.directories ?? const [])
+                    directoryPath,
+                ];
+                SortNotes.sortNotes(unsortedFolders);
+                return unsortedFolders;
+              }(),
             ),
             if (children == null) ...[
               // loading
@@ -199,10 +203,14 @@ class _BrowsePageState extends State<BrowsePage> {
                 ),
                 sliver: MasonryFiles(
                   crossAxisCount: crossAxisCount,
-                  files: [
-                    for (final filePath in children?.files ?? const [])
-                      "${path ?? ""}/$filePath",
-                  ],
+                  files: () {
+                    final unsortedFiles = [
+                      for (final filePath in children?.files ?? const [])
+                        "${path ?? ""}/$filePath",
+                    ];
+                    SortNotes.sortNotes(unsortedFiles);
+                    return unsortedFiles;
+                  }(),
                   selectedFiles: selectedFiles,
                 ),
               ),
