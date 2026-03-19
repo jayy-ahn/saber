@@ -96,13 +96,21 @@ class SortNotes {
       final Directory secondDir = Directory(FileManager.documentsDirectory + b);
       final DateTime firstTime = firstDir.existsSync()
           ? _getDirLastModified(firstDir)
-          : FileManager.lastModified(a + Editor.extension);
+          : _getFileLastModified(a + Editor.extension);
       final DateTime secondTime = secondDir.existsSync()
           ? _getDirLastModified(secondDir)
-          : FileManager.lastModified(b + Editor.extension);
+          : _getFileLastModified(b + Editor.extension);
       return firstTime.compareTo(secondTime);
     });
     if (!isIncreasing) _reverse(filePaths);
+  }
+
+  static DateTime _getFileLastModified(String filePath) {
+    final file = FileManager.getFile(filePath);
+    if (file.existsSync()) {
+      return file.lastModifiedSync();
+    }
+    return DateTime.min;
   }
 
   static int _getDirSize(Directory dir) {
@@ -126,13 +134,21 @@ class SortNotes {
       final Directory secondDir = Directory(FileManager.documentsDirectory + b);
       final int firstSize = firstDir.existsSync()
           ? _getDirSize(firstDir)
-          : FileManager.getFile('$a${Editor.extension}').statSync().size;
+          : _getFileSize('$a${Editor.extension}');
       final int secondSize = secondDir.existsSync()
           ? _getDirSize(secondDir)
-          : FileManager.getFile('$b${Editor.extension}').statSync().size;
+          : _getFileSize('$b${Editor.extension}');
       return firstSize.compareTo(secondSize);
     });
     if (!isIncreasing) _reverse(filePaths);
+  }
+
+  static int _getFileSize(String filePath) {
+    final file = FileManager.getFile(filePath);
+    if (file.existsSync()) {
+      return file.statSync().size;
+    }
+    return 0;
   }
 }
 
