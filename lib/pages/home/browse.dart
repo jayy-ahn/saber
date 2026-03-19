@@ -179,7 +179,7 @@ class _BrowsePageState extends State<BrowsePage> {
                 findChildrenOfPath();
               },
               folders: () {
-                final unsortedFolders = [
+                final List<String> unsortedFolders = [
                   for (final directoryPath in children?.directories ?? const [])
                     directoryPath,
                 ];
@@ -203,8 +203,8 @@ class _BrowsePageState extends State<BrowsePage> {
                 ),
                 sliver: MasonryFiles(
                   crossAxisCount: crossAxisCount,
-                  files: () {
-                    final unsortedFiles = [
+                   files: () {
+                    final List<String> unsortedFiles = [
                       for (final filePath in children?.files ?? const [])
                         "${path ?? ""}/$filePath",
                     ];
