@@ -183,7 +183,7 @@ class _BrowsePageState extends State<BrowsePage> {
                   for (final directoryPath in children?.directories ?? const [])
                     directoryPath,
                 ];
-                SortNotes.sortNotes(unsortedFolders);
+                SortNotes.sortNotes(unsortedFolders, forced: true);
                 return unsortedFolders;
               }(),
             ),
@@ -203,12 +203,12 @@ class _BrowsePageState extends State<BrowsePage> {
                 ),
                 sliver: MasonryFiles(
                   crossAxisCount: crossAxisCount,
-                  files: () {
+                   files: () {
                     final List<String> unsortedFiles = [
                       for (final filePath in children?.files ?? const [])
                         "${path ?? ""}/$filePath",
                     ];
-                    SortNotes.sortNotes(unsortedFiles);
+                    SortNotes.sortNotes(unsortedFiles, forced: true);
                     return unsortedFiles;
                   }(),
                   selectedFiles: selectedFiles,
