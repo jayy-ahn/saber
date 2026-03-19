@@ -110,7 +110,7 @@ class SortNotes {
     if (file.existsSync()) {
       return file.lastModifiedSync();
     }
-    return DateTime.min;
+    return DateTime(0);
   }
 
   static int _getDirSize(Directory dir) {
