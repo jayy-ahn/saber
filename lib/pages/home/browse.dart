@@ -203,7 +203,7 @@ class _BrowsePageState extends State<BrowsePage> {
                 ),
                 sliver: MasonryFiles(
                   crossAxisCount: crossAxisCount,
-                   files: () {
+                  files: () {
                     final List<String> unsortedFiles = [
                       for (final filePath in children?.files ?? const [])
                         "${path ?? ""}/$filePath",
